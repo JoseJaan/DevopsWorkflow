@@ -6,13 +6,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/luskation:1.0
+      VERSION: "2.0"
+      IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/luskation
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t $IMAGE .
-      - run: docker image inspect $IMAGE
+      - run: docker build -t $IMAGE:$VERSION .
+      - run: docker image inspect $IMAGE:$VERSION
       - uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - run: docker push $IMAGE
+      - run: docker push $IMAGE:$VERSION
