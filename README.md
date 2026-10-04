@@ -43,5 +43,25 @@ Hello World 2
 ### Versão 2.0 baixada do registry
 
 ```
-PENDENTE: preencher após a pipeline publicar a 2.0
+$ docker pull joseaaneto/luskation:2.0
+Digest: sha256:c33fc1e9984a249e46473172d3033ea474987be29cfa965cf533338e947ee7ef
+Status: Downloaded newer image for joseaaneto/luskation:2.0
+docker.io/joseaaneto/luskation:2.0
+$ docker run -d -p 8080:8000 joseaaneto/luskation:2.0
+$ curl http://localhost:8080/hello
+Hello World 2
 ```
+
+### Tags no registry
+
+```
+$ curl -s https://hub.docker.com/v2/repositories/joseaaneto/luskation/tags
+2.0  2026-10-04T19:59:01Z
+1.0  2026-09-29T01:08:35Z
+```
+
+### Execuções da pipeline
+
+O push do commit "Versão 2 da aplicação" disparou a execução #3, concluída com sucesso em 21 s.
+
+![Execuções do GitHub Actions](evidencias/pipeline-actions.png)
